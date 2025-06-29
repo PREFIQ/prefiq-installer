@@ -8,13 +8,13 @@ import tempfile
 import zipfile
 import os
 
-GITHUB_ZIP_URL = "https://github.com/YOUR_USERNAME/prefiq/archive/refs/heads/main.zip"
+GITHUB_ZIP_URL = "https://github.com/PREFIQ/prefiq-py-cli/archive/refs/heads/main.zip"
 INSTALL_DIR = Path.home() / ".prefiq"
 
 def check_python_version():
     major, minor = sys.version_info[:2]
     if major < 3 or (major == 3 and minor < 8):
-        print("❌ Python 3.8+ is required. Please upgrade your Python.")
+        print("Python 3.8+ is required. Please upgrade your Python.")
         sys.exit(1)
 
 def download_zip_and_extract():
@@ -35,15 +35,15 @@ def main():
     check_python_version()
 
     if INSTALL_DIR.exists():
-        print("🧹 Cleaning up previous install...")
+        print("Cleaning up previous install...")
         shutil.rmtree(INSTALL_DIR)
 
-    print("📥 Downloading and installing Prefiq CLI...")
+    print("Downloading and installing Prefiq CLI...")
     INSTALL_DIR.mkdir(parents=True, exist_ok=True)
     download_zip_and_extract()
     install_package()
-    print("✅ Prefiq CLI installed successfully!")
-    print("👉 Try running: prefiq install sundar")
+    print("Prefiq CLI installed successfully!")
+    print("Try running: prefiq install sundar")
 
 if __name__ == "__main__":
     main()

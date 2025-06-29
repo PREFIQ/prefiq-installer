@@ -14,3 +14,6 @@ chmod +x release.sh
 ```
 ./release.sh --major
 ```
+
+ where prefiq-installer
+C:\Users\SUNDAR\AppData\Local\Programs\Python\Python313\Scripts\prefiq-installer.exe

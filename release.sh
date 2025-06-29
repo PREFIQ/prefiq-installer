@@ -35,27 +35,19 @@ else
 fi
 
 NEW_VERSION="$MAJOR.$MINOR.$PATCH"
-echo "🔧 Updating version to $NEW_VERSION..."
+echo "🔧 Bumping version to $NEW_VERSION"
 
 # Replace version
 sed -i '' "s/__version__ = .*/__version__ = \"$NEW_VERSION\"/" "$VERSION_FILE" 2>/dev/null || \
 sed -i "s/__version__ = .*/__version__ = \"$NEW_VERSION\"/" "$VERSION_FILE"
 
-# Clean previous builds
-echo "🧹 Cleaning old builds..."
-rm -rf dist/ build/ *.egg-info
+# Git commit, tag, and push
+echo "📤 Committing and pushing release..."
+git add "$VERSION_FILE"
+git commit -m "🔖 Release v$NEW_VERSION"
+git tag "v$NEW_VERSION"
+git push origin main
+git push origin "v$NEW_VERSION"
 
-# Build
-echo "🏗️  Building..."
-python -m build
-
-# Load .env
-if [ -f .env ]; then
-  export $(grep -v '^#' .env | xargs)
-fi
-
-# Upload
-echo "🚀 Uploading to PyPI..."
-twine upload -u "$PYPI_USERNAME" -p "$PYPI_PASSWORD" dist/*
-
-echo "🎉 Release complete: v$NEW_VERSION"
+echo "✅ Version bumped to $NEW_VERSION and pushed to GitHub"
+echo "🚀 GitHub Actions will now build and publish to PyPI automatically."
