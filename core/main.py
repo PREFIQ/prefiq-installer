@@ -9,7 +9,7 @@ import subprocess
 
 INSTALL_DIR = os.path.join(sys.exec_prefix, "Scripts") if os.name == "nt" else os.path.join(sys.exec_prefix, "bin")
 PREFIQ_PATH = os.path.join(INSTALL_DIR, "prefiq.exe" if os.name == "nt" else "prefiq")
-GIT_ZIP_URL = "https://github.com/youruser/prefiq/releases/latest/download/prefiq.zip"
+GIT_ZIP_URL = "https://github.com/PREFIQ/prefiq-py-cli/archive/refs/heads/main.zip"
 
 def download_and_extract():
     print("Downloading prefiq.zip from GitHub...")
