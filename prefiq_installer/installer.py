@@ -13,7 +13,6 @@ from datetime import datetime
 INSTALL_DIR = Path.home() / ".prefiq"
 LOG_FILE = INSTALL_DIR / "installer.log"
 REQUIRED_FOLDERS = [
-    "prefiq/templates",
     "prefiq/templates/prefentity",
     "prefiq/templates/app_full",
 ]
