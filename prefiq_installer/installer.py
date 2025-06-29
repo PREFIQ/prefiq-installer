@@ -4,12 +4,10 @@ import sys
 import shutil
 import subprocess
 from pathlib import Path
-from urllib.request import urlopen, Request
+from urllib.request import urlopen
 import tempfile
 import zipfile
-import os
 import importlib.metadata
-import json
 from datetime import datetime
 
 INSTALL_DIR = Path.home() / ".prefiq"
@@ -20,7 +18,7 @@ REQUIRED_FOLDERS = [
     "prefiq/templates/app_full",
 ]
 
-GITHUB_API_RELEASE_URL = "https://api.github.com/repos/PREFIQ/prefiq-py-cli/releases/latest"
+GITHUB_ZIP_URL = "https://github.com/PREFIQ/prefiq-py-cli/archive/refs/heads/main.zip"
 
 def log(msg):
     timestamp = datetime.now().strftime("[%Y-%m-%d %H:%M:%S]")
@@ -36,13 +34,7 @@ def check_python_version():
         sys.exit(1)
 
 def get_latest_release_zip_url():
-    req = Request(GITHUB_API_RELEASE_URL, headers={"Accept": "application/vnd.github+json"})
-    with urlopen(req) as response:
-        data = json.loads(response.read().decode())
-        zip_url = data.get("zipball_url")
-        if not zip_url:
-            raise Exception("Could not retrieve latest release ZIP URL.")
-        return zip_url
+    return GITHUB_ZIP_URL
 
 def get_installed_version(package: str):
     try:
