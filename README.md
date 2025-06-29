@@ -120,31 +120,9 @@ This will remove the folder and update `prefentity/manifest.json`.
 
 ---
 
-## 📈 Project Stats
-
-* **Latest Version**: `v0.1.0`
-* **PyPI Downloads**: `10,000+` (placeholder)
-* **GitHub Stars**: `⭐ 500+` (placeholder)
-
----
-
 ## 🤝 Contributing
 
-We welcome contributions! To get started:
-
-1. Fork this repository
-2. Create a feature branch
-3. Submit a pull request
-
-Make sure your code passes all existing tests and includes new ones as necessary.
-
-### Run Locally
-
-```bash
-git clone https://github.com/PREFIQ/prefiq-py-cli.git
-cd prefiq-py-cli
-pip install -e .
-```
+We welcome contributions! To get started:[Contribute](CONTRIBUTING.md)
 
 ---
 
@@ -168,4 +146,4 @@ For support or questions, reach out via GitHub issues or email us at `support@pr
 
 > Built with passion by the **Prefiq** engineering team.
 
-```
+---
