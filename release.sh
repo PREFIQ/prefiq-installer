@@ -50,8 +50,8 @@ echo "🏗️  Building..."
 python -m build
 
 # Load .env
-if [ -f ".env" ]; then
-  export $(cat .env | xargs)
+if [ -f .env ]; then
+  export $(grep -v '^#' .env | xargs)
 fi
 
 # Upload
