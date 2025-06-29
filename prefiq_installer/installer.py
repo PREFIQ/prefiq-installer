@@ -1,3 +1,5 @@
+# prefiq_installer/installer.py
+
 import sys
 import shutil
 import subprocess

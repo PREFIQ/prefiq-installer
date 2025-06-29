@@ -1,3 +1,4 @@
+# setup.py
 from setuptools import setup, find_packages
 import os
 
@@ -22,7 +23,7 @@ setup(
     ],
     entry_points={
         'console_scripts': [
-            'prefiq-install = prefiq_installer.installer:main',
+            'prefiq-installer = prefiq_installer.installer:main',
         ],
     },
     classifiers=[
