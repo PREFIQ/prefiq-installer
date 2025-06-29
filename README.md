@@ -169,19 +169,3 @@ For support or questions, reach out via GitHub issues or email us at `support@pr
 > Built with passion by the **Prefiq** engineering team.
 
 ```
-
----
-
-### 📝 Notes:
-
-- Replace placeholders like `10,000+` downloads and `⭐ 500+` stars with real data if available.
-- Consider adding badges for:
-  - GitHub Actions status
-  - Code coverage (if testing is set up)
-- You can create additional docs in `docs/` folder if planning multi-page documentation.
-
-Would you like me to generate:
-- A `SECURITY.md`
-- `CONTRIBUTING.md`
-- `LICENSE` file (MIT)?
-```
