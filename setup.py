@@ -4,7 +4,7 @@ import os
 
 # Load version from version.py
 version = {}
-version_path = os.path.join(os.path.dirname(__file__), "prefiq_installer", "version.py")
+version_path = os.path.join(os.path.dirname(__file__), "core", "version.py")
 with open(version_path) as f:
     exec(f.read(), version)
 

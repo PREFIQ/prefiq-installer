@@ -2,7 +2,6 @@ rich>=13.0.0
 click>=8.2.1
 setuptools>=80.9.0
 twine>=6.1.0
-python-dotenv>=1.1.1
-wheel>=0.46.1
-build>=1.2.2
+wheel
+build
 
