@@ -8,7 +8,8 @@ import zipfile
 import subprocess
 
 INSTALL_DIR = os.path.join(sys.exec_prefix, "Scripts") if os.name == "nt" else os.path.join(sys.exec_prefix, "bin")
-PREFIQ_PATH = os.path.join(INSTALL_DIR, "prefiq.exe" if os.name == "nt" else "prefiq")
+PREFIQ_NAME = "prefiq.exe" if os.name == "nt" else "prefiq"
+PREFIQ_PATH = os.path.join(INSTALL_DIR, PREFIQ_NAME)
 GIT_ZIP_URL = "https://github.com/PREFIQ/prefiq-py-cli/archive/refs/heads/main.zip"
 
 def download_and_extract():
@@ -21,11 +22,23 @@ def download_and_extract():
                 f.write(response.content)
             with zipfile.ZipFile(zip_path, 'r') as zip_ref:
                 zip_ref.extractall(tmpdir)
-                for file in os.listdir(tmpdir):
-                    if file.lower() == "prefiq.exe" or file.lower() == "prefiq":
-                        shutil.copy(os.path.join(tmpdir, file), PREFIQ_PATH)
-                        print(f"Installed to {PREFIQ_PATH}")
+
+                # Find the file inside .bin/ directory in extracted archive
+                found = False
+                for root, dirs, files in os.walk(tmpdir):
+                    for file in files:
+                        if file.lower() == PREFIQ_NAME:
+                            if os.path.basename(os.path.dirname(file)).lower() == ".bin" or ".bin" in root:
+                                src_path = os.path.join(root, file)
+                                shutil.copy(src_path, PREFIQ_PATH)
+                                print(f"Installed to {PREFIQ_PATH}")
+                                found = True
+                                break
+                    if found:
                         break
+
+                if not found:
+                    print(f"{PREFIQ_NAME} not found in .bin folder of the zip.")
     else:
         print("Failed to download prefiq.zip")
 
@@ -54,7 +67,6 @@ def check_and_add_path():
         print(f"WARNING: {INSTALL_DIR} is not in your PATH.")
         if os.name == "nt":
             try:
-                # Add permanently to user environment variables (Windows only)
                 import winreg
                 with winreg.OpenKey(winreg.HKEY_CURRENT_USER, "Environment", 0, winreg.KEY_SET_VALUE) as key:
                     current_path = winreg.QueryValueEx(key, "Path")[0]
@@ -86,7 +98,6 @@ def main():
     elif args.remove:
         remove_exe()
     else:
-        # On regular install or re-install
         remove_exe()
         download_and_extract()
         check_and_add_path()
