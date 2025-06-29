@@ -3,7 +3,7 @@
 set -e
 
 # CONFIG
-PACKAGE_NAME="prefiq_installer"
+PACKAGE_NAME="core"
 VERSION_FILE="./$PACKAGE_NAME/version.py"
 
 # Validate file

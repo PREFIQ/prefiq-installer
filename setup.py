@@ -15,15 +15,15 @@ setup(
     author="Sundar",
     author_email="sundar@prefiq.com",
     license="MIT",
+    url="https://github.com/youruser/prefiq",
     packages=find_packages(),
     include_package_data=True,
     install_requires=[
-        "click>=8.0.0",
-        "rich>=13.0.0",
+        "requests"
     ],
     entry_points={
         'console_scripts': [
-            'prefiq-installer = prefiq_installer.installer:main',
+            "prefiq=core.main:main",
         ],
     },
     classifiers=[
@@ -31,5 +31,5 @@ setup(
         "License :: OSI Approved :: MIT License",
         "Operating System :: OS Independent",
     ],
-    python_requires=">=3.8",
+    python_requires=">=3.12",
 )
