@@ -56,10 +56,11 @@ def get_version():
         print("prefiq not installed.")
 
 def show_help():
-    print("prefiq --version      Show version")
-    print("prefiq --help         Show help")
-    print("prefiq --update       Update prefiq")
-    print("prefiq --remove       Remove prefiq")
+    print("Usage:")
+    print("  prefiq --version      Show version")
+    print("  prefiq --help         Show help")
+    print("  prefiq --update       Update prefiq")
+    print("  prefiq --remove       Remove prefiq")
 
 def check_and_add_path():
     path_env = os.environ.get("PATH", "")
@@ -80,14 +81,13 @@ def check_and_add_path():
 
 def main():
     parser = argparse.ArgumentParser(description="prefiq installer")
-    parser.add_argument("--version", action="store_true")
-    parser.add_argument("--help", action="store_true")
-    parser.add_argument("--update", action="store_true")
-    parser.add_argument("--remove", action="store_true")
+    parser.add_argument("--version", action="store_true", help="Show version")
+    parser.add_argument("--update", action="store_true", help="Update prefiq")
+    parser.add_argument("--remove", action="store_true", help="Remove prefiq")
 
-    args = parser.parse_args()
+    args, unknown = parser.parse_known_args()
 
-    if args.help:
+    if "--help" in unknown:
         show_help()
     elif args.version:
         get_version()
